@@ -19,8 +19,13 @@
 @import "normalize";
 
 // Projects
+@import "header";
+@import "breadcrumb";
+@import "main";
+@import "footer";
 @import "section";
 @import "form";
+@import "icon";
 
 // Utility
 //@import "utilities/flex";

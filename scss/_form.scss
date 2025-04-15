@@ -4,6 +4,7 @@
 
 .form {
   @include form();
+  margin-bottom: space(4);
 
   &__table {
     @include table();

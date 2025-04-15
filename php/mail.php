@@ -28,7 +28,7 @@ $Email = "Email";
 
 //スパム防止のためのリファラチェック (する=1, しない=0)
 $Referer_check = 1;
-$Referer_check_domain = "qwel.design";
+$Referer_check_domain = "tools.qwel.design";
 
 // セッションによるワンタイムトークン（CSRF対策、及びスパム防止）(する=1, しない=0)
 $useToken = 1;
@@ -96,7 +96,7 @@ $mailSignature = <<< TEXT
 
 ────────────────────────
 福井の物作りのためのweb制作&プログラミング教室
-Qwel Design (クヴェル・デザイン)
+QWEL.DESIGN (クヴェル・デザイン)
 
 伊藤 大悟 (代表)
 ────────────────────────
@@ -220,7 +220,7 @@ else if($confirmDsp == 1){
 				<?php if($empty_flag == 1){ ?>
 					<h4>入力にエラーがあります。
 						<br>下記をご確認の上「戻る」ボタンにて修正をお願い致します。</h4>
-					<div style="color:red"><?php echo $errm; ?></div>
+					<div style="color:orange"><?php echo $errm; ?></div>
 					<div class="form__buttons">
 						<input type="button" value="前画面に戻る" onClick="history.back()">
 					</div>
@@ -270,7 +270,7 @@ if(($jumpPage == 0 && $sendmail == 1) || ($jumpPage == 0 && ($confirmDsp == 0 &&
       	<div class="section__container">
 					<h4>入力にエラーがあります。
 						<br>下記をご確認の上「前画面に戻る」ボタンにて修正をお願い致します。</h4>
-					<div style="color:red"><?php echo $errm; ?></div>
+					<div style="color:orange"><?php echo $errm; ?></div>
 					<div class="form__buttons">
 						<input type="button" value="前画面に戻る" onClick="history.back()">
 					</div>
@@ -297,7 +297,7 @@ else if(($jumpPage == 1 && $sendmail == 1) || $confirmDsp == 0) {
 		<div>
 			<h4>入力にエラーがあります。
 				<br>下記をご確認の上「戻る」ボタンにて修正をお願い致します。</h4>
-			<div style="color:red"><?php echo $errm; ?></div>
+			<div style="color:orange"><?php echo $errm; ?></div>
 			<div class="form__buttons">
 				<input type="button" value="前画面に戻る" onClick="history.back()">
 			</div>
@@ -457,8 +457,8 @@ function adminHeader($post_mail,$BccMail){
 }
 // 管理者宛送信メールボディ
 function mailToAdmin($arr,$subject,$mailFooterDsp,$mailSignature,$encode,$confirmDsp){
-	$adminBody="「".$subject."」からメールが届きました\n\n";
-	$adminBody .="────────────────────────\n\n";
+	$adminBody = $subject."\n\n";
+	$adminBody.="────────────────────────\n\n";
 	$adminBody.= postToMail($arr); // POSTデータを関数からセット
 	$adminBody.="\n────────────────────────\n";
 	$adminBody.="送信された日時: ".date( "Y/m/d (D) H:i:s", time() )."\n";
